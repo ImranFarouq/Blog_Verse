@@ -1,0 +1,93 @@
+
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* static/style.css */
+        h1{
+        text-align: center;
+    }
+        /* Style the container for all blog posts */
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+            /* static/style.css */
+
+    /* Style each clickable blog box */
+    .blog-box {
+        text-decoration: none;
+        color: inherit;
+        width: 300px; /* Fixed width for all boxes */
+        height: 200px; /* Fixed height for all boxes */
+        border: 2px solid #e0e0e0;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; /* Hide content that exceeds the box */
+    }
+
+    .blog-box:hover {
+        transform: scale(1.05); /* Add a hover effect to slightly scale up the box */
+    }
+
+    /* Style the blog post title */
+    .blog-post h2 {
+        font-size: 1.2rem; /* Adjust the font size as needed */
+        margin-bottom: 10px;
+    }
+
+    /* Style the blog post content */
+    .blog-post p {
+        font-size: 1rem;
+        color: #333;
+        overflow: hidden; /* Hide overflowing text */
+        text-overflow: ellipsis; /* Add an ellipsis (...) for long content */
+    }
+
+    /* Allow the title to span multiple lines */
+    .blog-post h2 {
+        white-space: normal;
+        overflow: visible;
+        max-height: 60px; /* Limit the title to 2 lines */
+        line-height: 1.2; /* Adjust line height for readability */
+    }
+
+        /* Ensure the title and content stay within the box */
+        /* .blog-post h2,
+        .blog-post p {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        } */
+    
+    </style>
+    
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <div class="blog-container">
+        {% for blog in blogs %}
+        <a href="{{ url_for('read_blog', blog_title=blog.title) }}" class="blog-box">
+            <article class="blog-post">
+                <h2>{{ blog.title }}</h2>
+                <p>{{ blog.content[:200] }}...</p>
+            </article>
+        </a>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+

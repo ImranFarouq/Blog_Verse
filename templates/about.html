@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Ink&Imagination</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            color: white; /* Set text color to white */
+            background-image: url("C:/Users/Nagabhushan/Desktop/blog/img1.jpeg"); /* Replace 'your-background-image.jpg' with your image file's path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background color for readability */
+        }
+
+        /* Add more styles as needed for specific elements */
+        h2, h3 {
+            color: white; /* Set heading text color to white */
+        }
+
+        .pillar-container {
+            display: flex;
+            justify-content: space-between; /* Spread the boxes horizontally */
+            margin-top: 20px;
+        }
+
+        .pillar-box {
+            flex-basis: calc(33.33% - 10px); /* Adjust the width of the boxes */
+            background-color: rgba(255, 255, 255, 0.1); /* Box background color */
+            padding: 20px;
+            border: 1px solid white;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    </style>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+
+<!-- Navbar -->
+<nav id="navbar">
+    <ul class="navbar-items flexbox-col">
+      <li class="navbar-logo flexbox-left">
+        <a class="navbar-item-inner flexbox">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+            <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+            <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+          </svg>
+        </a>
+      </li>
+      <!-- <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="search-outline"></ion-icon>
+          </div>
+          <span class="link-text">Search</span>
+        </a>
+      </li> -->
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left" href="/home">
+          <div class="navbar-item-inner-icon-wrapper flexbox" >
+            <ion-icon name="home-outline"></ion-icon>
+          </div>
+          <a href="/home">  <span class="link-text">Home</span></a>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left" >
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="folder-open-outline"></ion-icon>
+          </div>
+          <a href="/blogs">   <span class="link-text">Blogs</span></a>    
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="pie-chart-outline"></ion-icon>
+          </div>
+          <a href="/add_blog">   <span class="link-text">Add Blog</span></a>   
+        </a>
+      </li>
+      <!-- <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+          <span class="link-text">Team</span>
+        </a>
+      </li> -->
+      
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left" >
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="settings-outline"></ion-icon>
+          </div>
+          <a href="/aboutus"><span class="link-text">About US</span></a>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+          <a class="navbar-item-inner flexbox-left">
+            <div class="navbar-item-inner-icon-wrapper flexbox">
+              <ion-icon name="chatbubbles-outline"></ion-icon>
+            </div>
+            <a href="/logout"><span class="link-text">Log Out</span></a>
+          </a>
+        </li>
+    </ul>
+  </nav>
+
+</head>
+<body>
+    
+
+    <div class="container">
+        <section class="mission-box">
+            <h2>Our Mission</h2>
+            <p>
+                At Ink&Imagination, our mission is to foster a community of curious minds, passionate writers, and intrepid explorers. We believe in the transformative power of words and the boundless potential of the human imagination. Our blog is a haven for those who seek to embark on literary journeys, share their thoughts and stories, and venture into uncharted territories of knowledge and experience.
+            </p>
+        </section>
+
+        <div class="pillar-container">
+            <div class="pillar-box">
+                <h3>Read</h3>
+                <p>
+                    We are avid readers and firm believers in the magic of books, articles, and stories. Our mission is to inspire a love for reading, whether it's discovering a new novel, exploring thought-provoking essays, or diving into the latest research. We curate a diverse range of content that celebrates the written word in all its forms.
+                </p>
+            </div>
+
+            <div class="pillar-box">
+                <h3>Write</h3>
+                <p>
+                    Writing is a powerful tool for self-expression and communication. We empower aspiring writers to find their voices, tell their stories, and engage with their passions. Our blog offers writing tips, creative prompts, and a platform for sharing your own words with the world. We believe everyone has a story worth telling.
+                </p>
+            </div>
+
+            <div class="pillar-box">
+                <h3>Explore</h3>
+                <p>
+                    The world is a vast and fascinating place, filled with cultures, ideas, and landscapes waiting to be explored. Whether it's traveling to far-off destinations, delving into the depths of history, or embracing new perspectives, we encourage our readers to embark on journeys of exploration—both within and beyond themselves. Through our content, we aim to ignite the spirit of adventure and curiosity.
+                </p>
+            </div>
+        </div>
+    </div>
+	
+
+    <!-- Add your footer section here -->
+
+</body>
+</html>
