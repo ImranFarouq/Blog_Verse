@@ -2,9 +2,9 @@ from flask import Flask, url_for, render_template, request, redirect, session
 from pymongo import MongoClient
 
 app = Flask(__name__)
-app.secret_key = "ab124"
+app.secret_key = "ab125"
 
-# MongoDB setup
+# MongoDB setup       mongodb+srv://admin:<password>@cluster0.fuuvqfk.mongodb.net/
 client = MongoClient("mongodb+srv://admin:imran123@cluster0.mz7q55x.mongodb.net/")
 db = client["blog"]
 users_collection = db["users"]
