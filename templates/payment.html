@@ -4,7 +4,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Responsive Payment getway form design in Hindi</title>
-	<link rel="stylesheet" type="text/css" href="payment.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+
+	<!-- <link rel="stylesheet" type="text/css" href="payment.css"> -->
+
+	<script>
+		function navigateToPage2() {
+		  window.location.href = '/home';
+		}
+		</script>
+		
 </head>
 <body>
 <header>
@@ -44,8 +53,8 @@
 			<h3>PAYMENT</h3>
 			<form>
 				Accepted Card <br>
-				<img src="image/card1.png" width="100">
-				<img src="image/card2.png" width="50">
+				<img src="static/images/card1.png" width="100">
+				<img src="static/images/card2.png" width="50">
 				<br><br>
 
 				Credit card number
@@ -70,7 +79,7 @@
 					</label>
 				</div>
 			</form>
-			<input type="submit" name="" value="Proceed to Checkout">
+			<input type="submit" name="" value="Subscribe to Premium" onclick="navigateToPage2()">
 		</div>
 	</div>
 </header>

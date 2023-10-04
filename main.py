@@ -88,6 +88,14 @@ def about():
     # blogs = list(collection.find())  # Convert the cursor to a list of dictionaries
     return render_template('about.html')
 
+
+@app.route('/premium')
+def premium():
+    # Retrieve blog posts from MongoDB
+    # blogs = list(collection.find())  # Convert the cursor to a list of dictionaries
+    return render_template('payment.html')
+
+
 @app.route("/logout")
 
 def logout():

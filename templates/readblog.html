@@ -4,11 +4,57 @@
 <head>
     <title>{{ blog.title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    h1 {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .content {
+        margin-top: 20px;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
-    <h1>{{ blog.title }}</h1>
-    <p>{{ blog.content }}</p>
-    <a href="/blogs">Back to Blog</a>
+    <div class="container">
+        <h1>{{ blog.title }}</h1>
+    
+        <div class="content"> 
+            <p>{{ blog.content }}</p>
+        
+
+        <a href="/blogs">Back to Blog</a>
+    </div>
+    </div>
 </body>
 </html>
