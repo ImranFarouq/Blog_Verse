@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>Add Blog Post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
     <style>
         /* Style.css */
 body {
@@ -76,6 +78,14 @@ a:hover {
 
     </style>
     
+<div class="back"></div>
+<nav>
+  <a href="/home">Home</a>
+  <a href="/blogs">Blogs</a>
+  <a href="#">Premium</a>
+  <a href="/aboutus">About</a>
+  <a href="/logout">Logout</a>
+</nav>
 </head>
 <body>
     <h1>Add Blog Post</h1>

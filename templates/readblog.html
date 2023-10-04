@@ -4,6 +4,8 @@
 <head>
     <title>{{ blog.title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
   <style>
     body {
         font-family: Arial, sans-serif;
@@ -44,6 +46,15 @@
         text-decoration: underline;
     }
 </style>
+
+    <div class="back"></div>
+    <nav>
+    <a href="/home">Home</a>
+    <a href="/blogs">Blogs</a>
+    <a href="#">Premium</a>
+    <a href="/aboutus">About</a>
+    <a href="/logout">Logout</a>
+    </nav>
 </head>
 <body>
     <div class="container">
