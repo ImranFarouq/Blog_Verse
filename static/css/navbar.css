@@ -2,7 +2,15 @@
 
 @import url('https://fonts.googleapis.com/css?family=Oswald:500');
 
-
+.logo {
+	margin-left: 20px; /* Adjust the margin as needed */
+  }
+  
+  .logo img {
+	width: 100px; /* Adjust the width of the logo as needed */
+	height: auto;
+  }
+  
 .site-title {
 	font-size: 35px;
 	margin-left: 20px; /* Adjust the margin as needed */
@@ -20,7 +28,7 @@
   } */
 
 .style-3 {
-	margin-top: 40px; /* Adjust the value as needed  */
+	margin-top: 0px; /* Adjust the value as needed  */
   } 
 .menu-3{
 	display: flex;
