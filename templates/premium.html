@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/fonts/icomoon/style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/owl.carousel.min.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/bootstrap.min.css') }}">
+   
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/premium.css') }}">
+
+    
+    <header class="site-navbar mt-3">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="site-logo col-6"><a href="/home" style="color: white;">BlogVerse</a></div>
+  
+            <nav class="mx-auto site-navigation" >
+              <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
+                <li><a href="/home" class="nav-link active"  style="color: white;">Home</a></li>
+                <li><a href="blogs" style="color: white;">Blog</a></li>
+                <li><a href="/premium" style="color: white;">Membership</a></li>
+                <!-- <li class="has-children">
+                  <a href="job-listings.html">Job Listings</a>
+                  <ul class="dropdown">
+                    <li><a href="job-single.html">Job Single</a></li>
+                    <li><a href="post-job.html">Post a Job</a></li>
+                  </ul>
+                </li> -->
+                <li><a href="/aboutus" style="color: white;">About us</a></li>
+                <!-- <li><a href="contact.html">Contact</a></li> -->
+                  <!-- <li class="d-lg-none"><a href="/add_blogs"><span class="mr-2">+</span> Post a Blog</a></li>
+                  <li class="d-lg-none"><a href="/logout">Log Out</a></li>   -->
+              </ul>
+            </nav>
+            
+            <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+              <div class="ml-auto">
+                <a href="/add_blog" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block" style="color: #89ba16"><span class="mr-2 icon-add"></span>Post a Blog</a>
+                <a href="/logout" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log Out</a>
+              </div>
+              <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+            </div>
+  
+          </div>
+        </div>
+      </header>
+
+</head>
+<body>
+    <div class="container">
+        <div class="plan">
+            <h2 class="plan-title">Normal Plan</h2>
+            <div class="plan-price">$9.99/month</div>
+            <p class="plan-description">Access to basic features</p>
+            <p class="plan-description">Read More than 5</p>
+            <p class="plan-description">Post 100 blogs</p>
+            <p class="plan-description">Like blogs</p>
+            <a href="/cards" class="btn">Select Plan</a>
+        </div>
+        <div class="plan">
+            <h2 class="plan-title">Premium Plan</h2>
+            <div class="plan-price">$19.99/month</div>
+            <p class="plan-description">Access to premium features</p>
+            <p class="plan-description">Unlimited Access to read</p>
+            <p class="plan-description">Post unlimited blogs</p>
+            <p class="plan-description">Free for 6 months</p>
+            <a href="/cards" class="btn">Select Plan</a>
+        </div>
+    </div>
+</body>
+</html>

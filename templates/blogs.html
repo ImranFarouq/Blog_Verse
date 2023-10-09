@@ -1,0 +1,113 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/fonts/icomoon/style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/owl.carousel.min.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/bootstrap.min.css') }}">
+   
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/style.css') }}">
+    
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        /* Style the container for all blog posts */
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Style each clickable blog box */
+        .blog-box {
+            text-decoration: none;
+            color: inherit;
+            width: calc(50% - 10px); /* Set the width to 50% minus some spacing (10px) */
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .blog-box:hover {
+            transform: scale(1.05);
+        }
+
+        /* Style the blog post title */
+        .blog-post h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Style the blog post content */
+        .blog-post p {
+            font-size: 1rem;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Allow the title to span multiple lines */
+        .blog-post h2 {
+            white-space: normal;
+            overflow: visible;
+            max-height: 60px;
+            line-height: 1.2;
+        }
+    </style>
+    
+    <header class="site-navbar mt-3">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="/home">BlogVerse</a></div>
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
+                        <li><a href="/home" class="nav-link active">Home</a></li>
+                        <li><a href="blogs">Blog</a></li>
+                        <li><a href="/premium">Membership</a></li>
+                        <li><a href="/aboutus">About us</a></li>
+                    </ul>
+                </nav>
+                <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+                    <div class="ml-auto">
+                        <a href="/add_blog" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Blog</a>
+                        <a href="/logout" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log Out</a>
+                    </div>
+                    <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+</head>
+<body>
+    <div style="margin-top: 80px;"> <!-- Add margin to this div -->
+        <!-- <h1>Blog Posts</h1> -->
+        <div class="blog-container">
+            {% for blog in blogs %}
+            <a href="{{ url_for('read_blog', blog_title=blog.title) }}" class="blog-box">
+                <h2>{{ blog.title }}</h2>
+                <p>{{ blog.content[:200] }}...</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
