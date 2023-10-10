@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+
+{% block title %} About Us {% endblock %}
+
+{% block css %} 
+<link rel="stylesheet" href="{{ url_for('static',  filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section class="mission-box">
+          <br>  
+          <h2>Our Mission</h2>
+          <br>
+            <p>
+                At Ink&Imagination, our mission is to foster a community of curious minds, passionate writers, and intrepid explorers. We believe in the transformative power of words and the boundless potential of the human imagination. Our blog is a haven for those who seek to embark on literary journeys, share their thoughts and stories, and venture into uncharted territories of knowledge and experience.
+            </p>
+            <br>
+        </section>
+
+        <div class="pillar-container">
+            <div class="pillar-box">
+                <h3>Read</h3>
+                <p>
+                    We are avid readers and firm believers in the magic of books, articles, and stories. Our mission is to inspire a love for reading, whether it's discovering a new novel, exploring thought-provoking essays, or diving into the latest research. We curate a diverse range of content that celebrates the written word in all its forms.
+                </p>
+            </div>
+
+            <div class="pillar-box">
+                <h3>Write</h3>
+                <p>
+                    Writing is a powerful tool for self-expression and communication. We empower aspiring writers to find their voices, tell their stories, and engage with their passions. Our blog offers writing tips, creative prompts, and a platform for sharing your own words with the world. We believe everyone has a story worth telling.
+                </p>
+            </div>
+
+            <div class="pillar-box">
+                <h3>Explore</h3>
+                <p>
+                    The world is a vast and fascinating place, filled with cultures, ideas, and landscapes waiting to be explored. Whether it's traveling to far-off destinations, delving into the depths of history, or embracing new perspectives, we encourage our readers to embark on journeys of exploration—both within and beyond themselves. Through our content, we aim to ignite the spirit of adventure and curiosity.
+                </p>
+            </div>
+        </div>
+    </div>
+	
+  {% endblock %}

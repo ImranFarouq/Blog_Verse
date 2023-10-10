@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Blogs {% endblock %}
+
+
+{% block content %}
+
+<div style="margin-top: 80px;"> <!-- Add margin to this div -->
+    <!-- <h1>Blog Posts</h1> -->
+    <div class="blog-container">
+        {% for blog in blogs %}
+        <a href="{{ url_for('read_blog', blog_title=blog.title) }}" class="blog-box">
+            <article class="blog-post">
+                <h2>{{ blog.title }}</h2>
+                <p>{{ blog.content[:200] }}...</p>
+                <p>Likes: {{ blog.likes }}</p>
+            </article>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

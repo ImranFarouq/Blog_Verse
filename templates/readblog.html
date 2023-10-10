@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Blogs {% endblock %}
+
+
+
+{% block content %}
+    <div class="container">
+        <h1>{{ blog.title }}</h1>
+    
+        <div class="content"> 
+            <p>{{ blog.content }}</p>
+            <!-- Display the number of likes -->
+            <p>Likes: {{ blog.likes }}</p>
+            
+            <!-- Check if the user has already liked the blog -->
+            {% if "username" in session %}
+                {% if session["username"] in blog.liked_by %}
+                    <form method="POST" action="{{ url_for('like_unlike_blog', blog_title=blog.title) }}">
+                        <input type="hidden" name="blog_title" value="{{ blog.title }}">
+                        <button type="submit" class="btn btn-danger">Unlike</button>
+                    </form>
+                {% else %}
+                    <form method="POST" action="{{ url_for('like_unlike_blog', blog_title=blog.title) }}">
+                        <input type="hidden" name="blog_title" value="{{ blog.title }}">
+                        <button type="submit" class="btn btn-primary">Like</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+
+
+        <a href="/blogs">Back to Blog</a>
+    </div>
+    </div>
+
+{% endblock %}
+
+

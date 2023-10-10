@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block title %} Add Blogs {% endblock %}
+
+{% block css %} 
+<link rel="stylesheet" href="{{ url_for('static',  filename='css/add_blog.css') }}">
+{% endblock %}
+
+{% block content %}  
+
+<div class="blog"> 
+
+    <form method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" required>
+        <br>
+        <br>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" name="image" accept="image/*">
+        <br>
+        <br>
+
+        <label for="content">Content:</label>
+        <textarea name="content" rows="4" cols="50" required></textarea>
+        <br>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <a href="{{ url_for('blogs') }}" class="back">Back to Blog</a>
+</div>
+
+{% endblock %}
+

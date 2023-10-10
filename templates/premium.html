@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %} Subscription Plan {% endblock %}
+
+{% block css %} 
+<link rel="stylesheet" href="{{ url_for('static',  filename='css/premium.css') }}">
+{% endblock %}
+
+{% block content %}
+    
+    <div class="container">
+        <div class="plan">
+            <h2 class="plan-title">Normal Plan</h2>
+            <div class="plan-price">$9.99/month</div>
+            <p class="plan-description">Access to basic features</p>
+            <p class="plan-description">Read More than 5</p>
+            <p class="plan-description">Post 100 blogs</p>
+            <p class="plan-description">Like blogs</p>
+            <a href="/cards" class="btn">Select Plan</a>
+        </div>
+        <div class="plan">
+            <h2 class="plan-title">Premium Plan</h2>
+            <div class="plan-price">$19.99/month</div>
+            <p class="plan-description">Access to premium features</p>
+            <p class="plan-description">Unlimited Access to read</p>
+            <p class="plan-description">Post unlimited blogs</p>
+            <p class="plan-description">Free for 6 months</p>
+            <a href="/cards" class="btn">Select Plan</a>
+        </div>
+    </div>
+
+  {% endblock %}
