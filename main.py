@@ -19,11 +19,14 @@ def login():
         user = users_collection.find_one({"username": username, "password": password})
         if user:
             session["username"] = username
+            user_data = users_collection.find_one({"username": username})
+            if user_data:
+                session['user_id'] = user_data['_id']
             return redirect(url_for("home"))
         else:
             return "Invalid credentials!"
     return render_template('login.html')
-    
+
     
 @app.route('/signup', methods=['GET','POST'])
 
@@ -48,6 +51,7 @@ def home():
     if "username" in session:
         username = session["username"]
         # return f"Welcome, {username}!"
+
         return render_template('home.html')
     
     else:
@@ -131,6 +135,13 @@ def about():
 @app.route('/premium')
 def premium():
     return render_template('premium.html')
+
+@app.route('/buy_premium')
+def buy_premium(): 
+    user_id = session.get('user_id')  # Replace with your user ID
+    users_collection.update_one({"_id": user_id}, {"$set": {"is_premium": True}})
+    return redirect(url_for('blogs'))
+
 
 @app.route('/cards')
 def card():
