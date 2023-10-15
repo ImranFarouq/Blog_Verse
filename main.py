@@ -11,15 +11,23 @@ users_collection = db["users"]
 collection = db["posts"]
 
 user = ' '
+premium_user = False
 
 @app.route('/', methods=['GET','POST'])
 def login():
     if request.method == "POST":
         username = request.form["your_name"]
         password = request.form["your_pass"]
+        
         global user
+        global premium_user
+
         user = users_collection.find_one({"username": username, "password": password})
-        print(user['is_premium'])
+        
+        # print(user['is_premium'])
+        
+        premium_user = user['is_premium']
+
         if user:
             session["username"] = username
             # user_data = users_collection.find_one({"username": username})
@@ -65,7 +73,7 @@ def home():
 def blogs():
     # Retrieve blog posts from MongoDB
     blogs = list(collection.find())  # Convert the cursor to a list of dictionaries
-    return render_template('blogs.html', blogs=blogs)
+    return render_template('blogs.html', blogs=blogs, premium_user=premium_user)
 
 
 @app.route('/read_blog/<string:blog_title>')
@@ -142,9 +150,13 @@ def premium():
 @app.route('/buy_premium')
 def buy_premium(): 
     global user
-    print(user)
+    global premium_user
+
     user_id = user['_id']  # Replace with your user ID
     users_collection.update_one({"_id": user_id}, {"$set": {"is_premium": True}})
+    
+    premium_user = True
+
     return redirect(url_for('blogs'))
 
 

@@ -551,6 +551,11 @@ body {
   padding-top: 80px;
 }
 
+.blurred-content {
+  /* Style for blurred content */
+  filter: blur(2px);
+}
+
 /* Add Blogs Page  */
 
 .add_blog {

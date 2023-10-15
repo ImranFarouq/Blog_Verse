@@ -12,7 +12,12 @@
         <a href="{{ url_for('read_blog', blog_title=blog.title) }}" class="blog-box">
             <article class="blog-post">
                 <h2>{{ blog.title }}</h2>
-                <p>{{ blog.content[:200] }}...</p>
+                {% if blog.is_premium and not premium_user %}
+                    <p >Upgrade to premium to access this content.</p>
+                    <div class="blurred-content">{{ blog.content[:200] }}</div>
+                {% else %}   
+                    <p>{{ blog.content[:200] }}...</p>
+                {% endif %}
                 <!-- <p>Likes: {{ blog.likes }}</p> -->
             </article>
         </a>
@@ -20,3 +25,4 @@
     </div>
 </div>
 {% endblock %}
+
