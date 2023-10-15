@@ -10,18 +10,21 @@ db = client["blog"]
 users_collection = db["users"]
 collection = db["posts"]
 
+user = ' '
+
 @app.route('/', methods=['GET','POST'])
 def login():
     if request.method == "POST":
         username = request.form["your_name"]
         password = request.form["your_pass"]
-        
+        global user
         user = users_collection.find_one({"username": username, "password": password})
+        print(user['is_premium'])
         if user:
             session["username"] = username
-            user_data = users_collection.find_one({"username": username})
-            if user_data:
-                session['user_id'] = user_data['_id']
+            # user_data = users_collection.find_one({"username": username})
+            # if user_data:
+            #     session['user_id'] = user_data['_id']
             return redirect(url_for("home"))
         else:
             return "Invalid credentials!"
@@ -138,7 +141,9 @@ def premium():
 
 @app.route('/buy_premium')
 def buy_premium(): 
-    user_id = session.get('user_id')  # Replace with your user ID
+    global user
+    print(user)
+    user_id = user['_id']  # Replace with your user ID
     users_collection.update_one({"_id": user_id}, {"$set": {"is_premium": True}})
     return redirect(url_for('blogs'))
 
