@@ -1,164 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Blogs {% endblock %}
 
 
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blog</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        /* static/style.css */
-        h1{
-        text-align: center;
-    }
-        /* Style the container for all blog posts */
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-            /* static/style.css */
+{% block content %}
 
-    /* Style each clickable blog box */
-    .blog-box {
-        text-decoration: none;
-        color: inherit;
-        width: 300px; /* Fixed width for all boxes */
-        height: 200px; /* Fixed height for all boxes */
-        border: 2px solid #e0e0e0;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease-in-out;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden; /* Hide content that exceeds the box */
-    }
-
-    .blog-box:hover {
-        transform: scale(1.05); /* Add a hover effect to slightly scale up the box */
-    }
-
-    /* Style the blog post title */
-    .blog-post h2 {
-        font-size: 1.2rem; /* Adjust the font size as needed */
-        margin-bottom: 10px;
-    }
-
-    /* Style the blog post content */
-    .blog-post p {
-        font-size: 1rem;
-        color: #333;
-        overflow: hidden; /* Hide overflowing text */
-        text-overflow: ellipsis; /* Add an ellipsis (...) for long content */
-    }
-
-    /* Allow the title to span multiple lines */
-    .blog-post h2 {
-        white-space: normal;
-        overflow: visible;
-        max-height: 60px; /* Limit the title to 2 lines */
-        line-height: 1.2; /* Adjust line height for readability */
-    }
-
-        /* Ensure the title and content stay within the box */
-        /* .blog-post h2,
-        .blog-post p {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        } */
-    
-    </style>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
-
-    <!-- Navbar -->
-    <nav id="navbar">
-        <ul class="navbar-items flexbox-col">
-          <li class="navbar-logo flexbox-left">
-            <a class="navbar-item-inner flexbox">
-              <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
-                <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
-                <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
-              </svg>
-            </a>
-          </li>
-          <!-- <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="search-outline"></ion-icon>
-              </div>
-              <span class="link-text">Search</span>
-            </a>
-          </li> -->
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" href="/home">
-              <div class="navbar-item-inner-icon-wrapper flexbox" >
-                <ion-icon name="home-outline"></ion-icon>
-              </div>
-              <a href="/home">  <span class="link-text">Home</span></a>
-            </a>
-          </li>
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" >
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="folder-open-outline"></ion-icon>
-              </div>
-              <a href="/blogs">   <span class="link-text">Blogs</span></a>    
-            </a>
-          </li>
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="pie-chart-outline"></ion-icon>
-              </div>
-              <a href="/add_blog">   <span class="link-text">Add Blog</span></a>   
-            </a>
-          </li>
-          <!-- <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="people-outline"></ion-icon>
-              </div>
-              <span class="link-text">Team</span>
-            </a>
-          </li> -->
-          
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" >
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="settings-outline"></ion-icon>
-              </div>
-              <a href="/aboutus"><span class="link-text">About US</span></a>
-            </a>
-          </li>
-          <li class="navbar-item flexbox-left">
-              <a class="navbar-item-inner flexbox-left">
-                <div class="navbar-item-inner-icon-wrapper flexbox">
-                  <ion-icon name="chatbubbles-outline"></ion-icon>
-                </div>
-                <a href="/logout"><span class="link-text">Log Out</span></a>
-              </a>
-            </li>
-        </ul>
-      </nav>
-</head>
-<body>
-    <h1>Blog Posts</h1>
+<div style="margin-top: 80px;"> <!-- Add margin to this div -->
+    <!-- <h1>Blog Posts</h1> -->
     <div class="blog-container">
         {% for blog in blogs %}
         <a href="{{ url_for('read_blog', blog_title=blog.title) }}" class="blog-box">
             <article class="blog-post">
                 <h2>{{ blog.title }}</h2>
-                <p>{{ blog.content[:200] }}...</p>
+                {% if blog.is_premium and not premium_user %}
+                    <p >Upgrade to premium to access this content.</p>
+                    <div class="blurred-content">{{ blog.content[:200] }}</div>
+                {% else %}   
+                    <p>{{ blog.content[:200] }}...</p>
+                {% endif %}
+                <!-- <p>Likes: {{ blog.likes }}</p> -->
             </article>
         </a>
         {% endfor %}
     </div>
-</body>
-</html>
-
-
+</div>
+{% endblock %}
 

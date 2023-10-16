@@ -1,0 +1,42 @@
+ /* Add your CSS styles here */
+ body {
+    font-family: Arial, sans-serif;
+    color: rgba(240, 255, 255, 0.566); /* Set text color to white */
+    background-image: url("back8.jpg"); /* Replace 'your-background-image.jpg' with your image file's path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    
+    max-width: 800px;
+    padding-top: 40px;
+}
+
+/* Add more styles as needed for specific elements */
+h2, h3 {
+    color: black; /* Set heading text color to white */
+}
+
+
+.pillar-container {
+    display: flex;
+    justify-content: space-between; /* Spread the boxes horizontally */
+    margin-top: 20px;
+}
+
+.pillar-box {
+    flex-basis: calc(33.33% - 10px); /* Adjust the width of the boxes */
+    background-color: rgba(255, 255, 255, 0.1); /* Box background color */
+    padding: 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    text-align: center;
+    color :bisque;
+}
+.mission-box {
+  color :blue;
+
+}
