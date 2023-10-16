@@ -1,16 +1,18 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Responsive Payment getway form design in Hindi</title>
+	<title>Payment getway </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
 
 	<!-- <link rel="stylesheet" type="text/css" href="payment.css"> -->
 
 	<script>
 		function navigateToPage2() {
-		  window.location.href = '/home';
+		  window.location.href = '/buy_premium';
 		}
 		</script>
 		
@@ -22,7 +24,7 @@
 			<h3>BILLING ADDRESS</h3>
 			<form>
 				Full name
-				<input type="text" name="" placeholder="Enter name">
+				<input type="text" name="" placeholder="Enter name" required>
 				Email
 				<input type="text" name="" placeholder="Enter email">
 
@@ -58,10 +60,10 @@
 				<br><br>
 
 				Credit card number
-			<input type="text" name="" placeholder="Enter card number">
+			<input type="text" name="" placeholder="Enter card number" required>
 				
 				Exp month
-				<input type="text" name="" placeholder="Enter Month">
+				<input type="text" name="" placeholder="Enter Month" required>
 				<div id="zip">
 					<label>
 						Exp year
@@ -85,3 +87,4 @@
 </header>
 </body>
 </html>
+

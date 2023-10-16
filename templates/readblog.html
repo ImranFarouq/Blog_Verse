@@ -1,74 +1,38 @@
-<!-- blog.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ blog.title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+{% extends "base.html" %}
 
-  <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
+{% block title %} Blogs {% endblock %}
 
-    .container {
-        max-width: 1500px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-    }
 
-    h1 {
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
-        margin: 0;
-        text-align: center;
-    }
 
-    .content {
-        margin-top: 20px;
-        padding: 20px;
-        line-height: 1.6;
-    }
-
-    a {
-        text-decoration: none;
-        color: #007bff;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-</style>
-
-<nav class="style-3">
-    <ul class="menu-3">
-    <li><a href="/home">Home</a></li>
-    <li><a href="/blogs">Blogs</a></li>
-    <li><a href="/premium">Premium</a></li>
-    <li><a href="/aboutus">About</a></li>
-    <li><a href="/logout">Log Out</a></li>
-
-    </ul>
-  </nav>
-
-</head>
-<body>
-    <div class="container">
+{% block content %}
+    <div class="readContainer">
         <h1>{{ blog.title }}</h1>
     
-        <div class="content"> 
+        <div class="blogcontent"> 
             <p>{{ blog.content }}</p>
-        
+            <!-- Display the number of likes -->
+            <p>Likes: {{ blog.likes }}</p>
+            
+            <!-- Check if the user has already liked the blog -->
+            {% if "username" in session %}
+                {% if session["username"] in blog.liked_by %}
+                    <form method="POST" action="{{ url_for('like_unlike_blog', blog_title=blog.title) }}">
+                        <input type="hidden" name="blog_title" value="{{ blog.title }}">
+                        <button type="submit" class="btn btn-danger">Unlike</button>
+                    </form>
+                {% else %}
+                    <form method="POST" action="{{ url_for('like_unlike_blog', blog_title=blog.title) }}">
+                        <input type="hidden" name="blog_title" value="{{ blog.title }}">
+                        <button type="submit" class="btn btn-primary">Like</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+
 
         <a href="/blogs">Back to Blog</a>
     </div>
     </div>
-</body>
-</html>
+
+{% endblock %}
+
+

@@ -1,151 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Blogs {% endblock %}
 
 
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blog</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        /* static/style.css */
-        h1{
-        text-align: center;
-    }
-        /* Style the container for all blog posts */
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-            /* static/style.css */
+{% block content %}
 
-    /* Style each clickable blog box */
-    .blog-box {
-        text-decoration: none;
-        color: inherit;
-        width: 300px; /* Fixed width for all boxes */
-        height: 200px; /* Fixed height for all boxes */
-        border: 2px solid #e0e0e0;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease-in-out;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden; /* Hide content that exceeds the box */
-    }
-
-    .blog-box:hover {
-        transform: scale(1.05); /* Add a hover effect to slightly scale up the box */
-    }
-
-    /* Style the blog post title */
-    .blog-post h2 {
-        font-size: 1.2rem; /* Adjust the font size as needed */
-        margin-bottom: 10px;
-    }
-
-    /* Style the blog post content */
-    .blog-post p {
-        font-size: 1rem;
-        color: #333;
-        overflow: hidden; /* Hide overflowing text */
-        text-overflow: ellipsis; /* Add an ellipsis (...) for long content */
-    }
-
-    /* Allow the title to span multiple lines */
-    .blog-post h2 {
-        white-space: normal;
-        overflow: visible;
-        max-height: 60px; /* Limit the title to 2 lines */
-        line-height: 1.2; /* Adjust line height for readability */
-    }
-
-        /* Ensure the title and content stay within the box */
-        /* .blog-post h2,
-        .blog-post p {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        } */
-    
-    </style>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
-
-    <!-- <div class="logo">
-        <img src="/static/images/logo1.png" alt="Logo">
-        </div> -->
-      </head>
-      <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm fixed-top">
-            <a href="#" class="navbar-brand font-weight-bold mr-auto">BlogVerse</a>
-            <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
-              <ul class="navbar-nav ml-auto">
-                <!-- Megamenu-->
-                
-             
-                <li class="nav-item"><a href="" class="nav-link font-weight-bold text-uppercase">About</a></li>
-                <li class="nav-item"><a href="" class="nav-link font-weight-bold text-uppercase">Services</a></li>
-                <li class="nav-item"><a href="" class="nav-link font-weight-bold text-uppercase">Contact</a></li>
-              </ul>
-            </div>  
-            <!-- <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-md-1">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
-          </nav>
-          <!-- <header>
-          
-          </header>
-          <main>
-            <div class="container py-5">
-              <div class="row text-center">
-                <div class="col-12">
-                  <h1>Bootstrap 4 Navbar</h1>
-                  <p class="lead">Display Submenu on Hover</p>
-                </div>
-              </div>
-            </div>  
-          </main>
-          <footer>
-            <div class="container py-5">
-              <div class="row">
-                <div class="col-12 text-center">
-                  <hr>
-                  <p><a href="https://reezhdesign.com/">ReeZh Design</a></p>
-                </div>
-              </div>
-            </div>
-          </footer> -->
-          
-          
-         
-    <!-- <nav class="style-3">
-        <ul class="menu-3">
-        <li><a href="/home">Home</a></li>
-        <li><a href="/blogs">Blogs</a></li>
-        <li><a href="/premium">Premium</a></li>
-        <li><a href="/aboutus">About</a></li>
-        <li><a href="/logout">Log Out</a></li>
-
-        </ul>
-      </nav> -->
-
-
-    <h1>Blog Posts</h1>
+<div style="margin-top: 80px;"> <!-- Add margin to this div -->
+    <!-- <h1>Blog Posts</h1> -->
     <div class="blog-container">
         {% for blog in blogs %}
         <a href="{{ url_for('read_blog', blog_title=blog.title) }}" class="blog-box">
             <article class="blog-post">
                 <h2>{{ blog.title }}</h2>
-                <p>{{ blog.content[:200] }}...</p>
+                {% if blog.is_premium and not premium_user %}
+                    <p >Upgrade to premium to access this content.</p>
+                    <div class="blurred-content">{{ blog.content[:200] }}</div>
+                {% else %}   
+                    <p>{{ blog.content[:200] }}...</p>
+                {% endif %}
+                <!-- <p>Likes: {{ blog.likes }}</p> -->
             </article>
         </a>
         {% endfor %}
     </div>
-</body>
-</html>
-
-
+</div>
+{% endblock %}
 

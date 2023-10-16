@@ -1,11 +1,11 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    background-image: url('G:/SJU/BDA2022_Sem3/Cloud Computing/payment/b&w.jpeg'); /* Replace with your image URL */
+    background-image: url("../images/b&w.jpeg"); /* Replace with your image URL */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    text-align: center;
+    /* text-align: center; */
     margin: 0;
     padding: 0;
     display: flex;
@@ -38,12 +38,12 @@ body {
 .plan {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    padding: 20px;
+    margin: 60px;
+    padding: 40px;
     border-radius: 30px;
     text-align: center;
     height: 100%;
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -72,7 +72,7 @@ h2 {
 
 .plan-description {
     font-size: 16px;
-    font-family: NEWS701 BT
+    font-family: NEWS701 BT;
     margin-bottom: 20px;
 }
 .btn-container {

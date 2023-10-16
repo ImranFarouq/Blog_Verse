@@ -1,77 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Ink&Imagination</title>
-    <style>
-        /* Add your CSS styles here */
-        body {
-            font-family: Arial, sans-serif;
-            color: white; /* Set text color to white */
-            background-image: url("static/images/back8.jpg"); /* Replace 'your-background-image.jpg' with your image file's path */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+{% extends "base.html" %} 
 
-        .container {
-            
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background color for readability */
-        }
+{% block title %} About Us {% endblock %}
 
-        /* Add more styles as needed for specific elements */
-        h2, h3 {
-            color: white; /* Set heading text color to white */
-        }
+{% block css %} 
+<link rel="stylesheet" href="{{ url_for('static',  filename='css/about.css') }}">
+{% endblock %}
 
-        .pillar-container {
-            display: flex;
-            justify-content: space-between; /* Spread the boxes horizontally */
-            margin-top: 20px;
-        }
-
-        .pillar-box {
-            flex-basis: calc(33.33% - 10px); /* Adjust the width of the boxes */
-            background-color: rgba(255, 255, 255, 0.1); /* Box background color */
-            padding: 20px;
-            border: 1px solid white;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .mission-box {
-          color :bisque;
-
-        }
-    </style>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-
-<nav class="style-3">
-    <ul class="menu-3">
-    <li><a href="/home">Home</a></li>
-    <li><a href="/blogs">Blogs</a></li>
-    <li><a href="/premium">Membership</a></li>
-    <li><a href="/aboutus">About</a></li>
-    <li><a href="/logout">Log Out</a></li>
-
-    </ul>
-  </nav>
-
-</head>
-<body>
-    
-
+{% block content %}
     <div class="container">
         <section class="mission-box">
-            <h2>Our Mission</h2>
+          <!-- <br>   -->
+          <h2>Our Mission</h2>
+          <br>
             <p>
                 At Ink&Imagination, our mission is to foster a community of curious minds, passionate writers, and intrepid explorers. We believe in the transformative power of words and the boundless potential of the human imagination. Our blog is a haven for those who seek to embark on literary journeys, share their thoughts and stories, and venture into uncharted territories of knowledge and experience.
             </p>
+            <br>
         </section>
 
         <div class="pillar-container">
@@ -98,8 +42,4 @@
         </div>
     </div>
 	
-
-    <!-- Add your footer section here -->
-
-</body>
-</html>
+  {% endblock %}
