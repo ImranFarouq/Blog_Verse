@@ -6,6 +6,11 @@ app.secret_key = "ab125"
 
 # MongoDB setup       mongodb+srv://admin:<password>@cluster0.fuuvqfk.mongodb.net/
 client = MongoClient("mongodb+srv://admin:imran123@cluster0.mz7q55x.mongodb.net/")
+
+
+# client = MongoClient("mongodb://localhost:27017")
+
+
 db = client["blog"]
 users_collection = db["users"]
 collection = db["posts"]
@@ -171,4 +176,4 @@ def logout():
   
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run( host = '0.0.0.0', port=80, debug=True)
