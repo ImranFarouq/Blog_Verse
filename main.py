@@ -53,7 +53,7 @@ def signup():
         if users_collection.find_one({"username": username}):
             return "Username already exists!"
         
-        users_collection.insert_one({"username": username, "email": email, "password": password})
+        users_collection.insert_one({"username": username, "email": email, "password": password, "is_premium": False})
         return redirect(url_for("login"))
     return render_template('signup.html')
 
