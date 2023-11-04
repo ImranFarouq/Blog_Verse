@@ -28,7 +28,7 @@ def login():
         
         # print(user['is_premium'])
         
-        premium_user = user['is_premium']
+        # premium_user = user['is_premium']
 
         if user:
             session["username"] = username
