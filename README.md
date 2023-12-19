@@ -7,3 +7,6 @@ Features
 * MongoDB database for efficient data storage.
 * Deployed on Amazon EC2 instance for scalability and reliability.
 * Infrastructure as Code (IaC) with Terraform for streamlined deployment.
+
+# Deployment
+Automate the deployment process using Terraform for easy scaling and maintenance on the Amazon EC2 cloud instance.
