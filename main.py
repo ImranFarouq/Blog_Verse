@@ -1,5 +1,6 @@
 from flask import Flask, url_for, render_template, request, redirect, session
 from pymongo import MongoClient
+import gridfs
 
 app = Flask(__name__)
 app.secret_key = "ab125"
@@ -9,6 +10,9 @@ client = MongoClient("mongodb+srv://admin:imran123@cluster0.mz7q55x.mongodb.net/
 db = client["blog"]
 users_collection = db["users"]
 collection = db["posts"]
+
+#creating a GridFS Object
+fs = gridfs.GridFS(db)
 
 @app.route('/', methods=['GET','POST'])
 
@@ -74,9 +78,13 @@ def add_blog():
         # Get data from the form
         title = request.form['title']
         content = request.form['content']
-
+        image = request.files['image']
+        if image:
+            # Storing the image in GridFS and get the file ID
+            image_id = fs.put(image, filename=image.filename)
+            
         # Insert the blog post into MongoDB
-        collection.insert_one({'title': title, 'content': content})
+        collection.insert_one({'title': title, 'content': content, 'image_id': str(image_id)})
 
         return redirect(url_for('blogs'))
 
